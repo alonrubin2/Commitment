@@ -1,0 +1,94 @@
+body {
+  font-family: poppins;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #78bdd9;
+  overflow: hidden;
+}
+
+.pink-square {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#F2AEC7), to(#BF6980));
+  background-image: linear-gradient(to bottom right, #F2AEC7, #BF6980);
+  position: absolute;
+  border-radius: 8px;
+  z-index: -1;
+  -webkit-box-shadow: 6px 6px 12px rgba(54, 91, 115, 0.6);
+          box-shadow: 6px 6px 12px rgba(54, 91, 115, 0.6);
+}
+
+.small {
+  height: 100px;
+  width: 100px;
+  top: 3.6%;
+  left: 11%;
+}
+
+.medium {
+  height: 180px;
+  width: 180px;
+  top: 22%;
+  left: 28%;
+}
+
+.large {
+  height: 450px;
+  width: 450px;
+  right: -18%;
+  bottom: -18%;
+}
+
+div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
+}
+
+.header {
+  text-align: center;
+}
+
+li {
+  line-height: 1.8;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+h1 {
+  letter-spacing: 4px;
+}
+
+h2 {
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+p {
+  font-weight: 600;
+}
+
+strong {
+  font-weight: 900;
+}
+/*# sourceMappingURL=styles.css.map */

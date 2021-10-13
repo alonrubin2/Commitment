@@ -1,0 +1,84 @@
+$background-color: #78bdd9;
+$background-square-color-dark: #BF6980;
+$background-square-color-light: #F2AEC7;
+$shadow-color: #365B73;
+
+body {
+    font-family: poppins;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-color;
+    overflow: hidden;
+}
+
+
+.pink-square {
+    background-image: linear-gradient(to bottom right, $background-square-color-light, $background-square-color-dark);
+    position: absolute;
+    border-radius: 8px;
+    z-index: -1;
+    box-shadow: 6px 6px 12px rgba($shadow-color, .6);
+}
+
+.small {
+    height: 100px;
+    width: 100px;
+    top: 3.6%;
+    left: 11%;
+}
+
+.medium {
+    height: 180px;
+    width: 180px;
+    top: 22%;
+    left: 28%;
+}
+
+.large {
+    height: 450px;
+    width: 450px;
+    right: -18%;
+    bottom: -18%;
+}
+
+// LAYOUT
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.header {
+    text-align: center;
+}
+
+li {
+    line-height: 1.8;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+
+// TYPOGRAPHY
+
+h1 {
+    letter-spacing: 4px;
+}
+
+h2 {
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+p {
+    font-weight: 600;
+}
+
+strong {
+    font-weight: 900;
+}
