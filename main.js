@@ -16,10 +16,10 @@ app.on('ready', () => {
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 800,
-    maxHeight: 800,
-    maxWidth: 800,
+    width: 580,
+    height: 580,
+    maxHeight: 580,
+    maxWidth: 580,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
