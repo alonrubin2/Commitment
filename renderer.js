@@ -4,7 +4,7 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
-
+// const CreateWindow = require('./CreateWindow');
 
 
 const minute = 60000;
@@ -50,17 +50,18 @@ function randomNumber(arr) {
     console.log(number)
     return number;
 }
-
+//add snooze option
 function notify() {
-    new Notification(TITLE_OPTIONS[randomNumber(TITLE_OPTIONS)], { body: 'COMMIT!' })
+    new Notification(TITLE_OPTIONS[randomNumber(TITLE_OPTIONS)], { body: 'COMMIT!' }) //switch roles between title and body
         .onclick = () => { } // pop the window
 }
 
 function timedNotification() {
     setInterval(() => {
-        console.log("timedNotification")
-        notify()
-    }, 90 * minute)
+        console.log("timedNotification");
+        notify();
+        // CreateWindow('popup.html');
+    }, .1 * minute)
 }
 
 timedNotification();

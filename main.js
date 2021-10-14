@@ -2,6 +2,7 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const electronReload = require('electron-reload')
+const CreateWindow = require('./CreateWindow');
 
 // Enable live reload for Electron too
 require('electron-reload')(__dirname, {
@@ -10,27 +11,26 @@ require('electron-reload')(__dirname, {
 });
 
 app.on('ready', () => {
-  onclick = createWindow();
+  CreateWindow('index.html')
 });
 
-function createWindow() {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 580,
-    height: 580,
-    maxHeight: 580,
-    maxWidth: 580,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
-  })
+// function createWindow() {
+//   // Create the browser window.
+//   const mainWindow = new BrowserWindow({
+//     width: 580,
+//     height: 580,
+//     maxHeight: 580,
+//     maxWidth: 580,
+//     webPreferences: {
+//       preload: path.join(__dirname, 'preload.js')
+//     }
+//   })
 
-  // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+//   // and load the index.html of the app.
+//   mainWindow.loadFile('index.html')
+// }
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
-}
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -39,7 +39,7 @@ app.whenReady().then(() => {
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    if (BrowserWindow.getAllWindows().length === 0) CreateWindow('index.html')
   })
 })
 
