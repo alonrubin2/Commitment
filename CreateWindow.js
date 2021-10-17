@@ -10,6 +10,9 @@ function CreateWindow(htmlFilePath) {
         height: 580,
         maxHeight: 580,
         maxWidth: 580,
+        transparent: true,
+        frame: false,
+        // frame: false,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
@@ -19,6 +22,7 @@ function CreateWindow(htmlFilePath) {
     mainWindow.loadFile(htmlFilePath)
     mainWindow.setVisibleOnAllWorkspaces(true)
     mainWindow.show()
+    mainWindow.setPosition(350, 1000);
 }
 
 module.exports = CreateWindow;

@@ -45,23 +45,26 @@ const TITLE_OPTIONS = [
 //     'about to test something and everything still works?'
 // ]
 
-function randomNumber(arr) {
-    const number = Math.floor(Math.random() * arr.length);
-    console.log(number)
-    return number;
-}
-//add snooze option
-function notify() {
-    new Notification(TITLE_OPTIONS[randomNumber(TITLE_OPTIONS)], { body: 'COMMIT!' }) //switch roles between title and body
-        .onclick = () => { } // pop the window
-}
+// function randomNumber(arr) {
+//     const number = Math.floor(Math.random() * arr.length);
+//     console.log(number)
+//     return number;
+// }
+// //add snooze option
+// function notify() {
+//     new Notification(TITLE_OPTIONS[randomNumber(TITLE_OPTIONS)], { body: 'COMMIT!' }) //switch roles between title and body
+//         .onclick = () => { } // pop the window
+// }
 
-function timedNotification() {
-    setInterval(() => {
-        console.log("timedNotification");
-        notify();
-        // CreateWindow('popup.html');
-    }, .1 * minute)
-}
+// function timedNotification() {
+//     setInterval(() => {
+//         console.log("timedNotification");
+//         notify();
+//         // CreateWindow('popup.html');
+//     }, .1 * minute)
+// }
 
-timedNotification();
+// timedNotification();
+
+
+// add Avi Bitter image to slide up with commit messege, use remove.bg
