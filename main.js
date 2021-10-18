@@ -1,9 +1,14 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, webContents } = require('electron')
 const path = require('path')
 const electronReload = require('electron-reload')
+var mainWindow = null;
+const minute = 60000;
 
-
+// trying to crete the portmessege connection
+// const channel = new MessageChannel();
+// const port1 = channel.port1;
+// const port2 = channel.port2;
 
 
 
@@ -22,29 +27,22 @@ app.on('ready', () => {
     maxWidth: 580,
     transparent: true,
     frame: false,
-    // frame: false,
+    alwaysOnTop: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
   loadWindow(mainWindow, 'index.html')
-  // mainWindow.setAlwaysOnTop(true);
-  const position = mainWindow.getPosition();
-  let left = position[0];
-  let top = position[1];
 
-  const animation = setInterval(() => {
-    if (top <= 50) {
-      clearInterval(animation);
-    }
-    top = top - 10;
-    console.log(position, left, top);
-    mainWindow.setPosition(left, top);
-  }, 100);
+  // animation(mainWindow);
+  // mainWindow.addEventListener('click', () => {
+  //   moveDown()
+  // })
 
 
-
-
+  // trying to crete the portmessege connection
+  //   port1.postMessage(mainWindow);
+  // ipcMain.postMessage('port', null, [port2])
 });
 
 // This method will be called when Electron has finished
@@ -73,23 +71,30 @@ function loadWindow(window, htmlFilePath) {
   window.loadFile(htmlFilePath)
   window.setVisibleOnAllWorkspaces(true)
   window.show()
-  window.setPosition(350, 500);
+  window.setPosition(350, 350);
 }
 
-// function windowAnimation(window) {
-//   const position = window.getPosition();
-//   let x = position[0];
-//   let y = position[1];
-//   console.log(position, x, y);
-//   for (let i = 0; y >= 50; i++) {
-//     y = y - 10;
-//     window.setPosition(x, y);
-//   }
-// }
+
 
 // need to find a way to use mainWondow to create a timed animation that moves it up
 
 function moveDown() {
-  console.log('clicked')
+  console.log('click')
 }
 
+function animation(window) {
+  const position = window.getPosition();
+  let left = position[0];
+  let top = position[1];
+
+
+  const animation = setInterval(() => {
+    if (top <= 50) {
+      clearInterval(animation);
+    }
+    top = top - 10;
+    console.log(top, left)
+    window.setPosition(left, top);
+  }, 100);
+
+}

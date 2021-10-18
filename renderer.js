@@ -6,6 +6,8 @@
 // process.
 // const CreateWindow = require('./CreateWindow');
 
+const { ipcRenderer } = require("electron/renderer");
+
 
 const minute = 60000;
 
@@ -72,10 +74,33 @@ function moveDown() {
     console.log('clicked')
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    console.log('loaded')
-    document.querySelector('close').on('click', (e) => {
-        e.preventDefault();
-        console.log('elad elad elad')
-    })
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//     console.log('loaded')
+//     document.querySelector('close').on('click', (e) => {
+//         e.preventDefault();
+//         console.log('elad elad elad')
+//     })
+// });
+const button = document.querySelector('#close');
+button.addEventListener('click', () => {
+    moveDown()
+})
+
+
+
+                // trying to crete the portmessege connection
+// ipcRenderer.on('port', (event) => {
+//     // When we receive a MessagePort in the main process, it becomes a
+//     // MessagePortMain.
+//     const port = event.ports[0]
+
+//     // MessagePortMain uses the Node.js-style events API, rather than the
+//     // web-style events API. So .on('message', ...) instead of .onmessage = ...
+//     port.on('message', (event) => {
+//         // data is { answer: 42 }
+//         const data = event.data
+//     })
+
+//     // MessagePortMain queues messages until the .start() method has been called.
+//     port.start()
+// })

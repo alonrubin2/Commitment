@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'">
+  <meta http-equiv="script-src-elem" content="script-src-elem 'self'; script-src 'unsafe-inline'">
   <title>Commitment</title>
   <link rel="stylesheet" href="styles.css">
   </link>
-  </script src="renderer.js">
+  <script src="renderer.js"></script>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
   <div class="pink-square large"></div>
   <div class="header">
     <h1 class="">Commit Reminder</h1>
-    <button id="moveDown" id="close">עשיתי, די נו</button>
+    <button onclick="moveDown()" id="close">עשיתי, די נו</button>
 
     <h2 class="">This App was created to help remind you to Commit Your Work</h2>
 
