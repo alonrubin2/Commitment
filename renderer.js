@@ -68,3 +68,14 @@ const TITLE_OPTIONS = [
 
 
 // add Avi Bitter image to slide up with commit messege, use remove.bg
+function moveDown() {
+    console.log('clicked')
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    console.log('loaded')
+    document.querySelector('close').on('click', (e) => {
+        e.preventDefault();
+        console.log('elad elad elad')
+    })
+});

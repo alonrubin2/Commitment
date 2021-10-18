@@ -2,7 +2,11 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const electronReload = require('electron-reload')
-// const CreateWindow = require('./CreateWindow');
+
+
+
+
+
 
 // Enable live reload for Electron too
 require('electron-reload')(__dirname, {
@@ -11,26 +15,37 @@ require('electron-reload')(__dirname, {
 });
 
 app.on('ready', () => {
-  CreateWindow('index.html')
+  const mainWindow = new BrowserWindow({
+    width: 580,
+    height: 580,
+    maxHeight: 580,
+    maxWidth: 580,
+    transparent: true,
+    frame: false,
+    // frame: false,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
+  })
+  loadWindow(mainWindow, 'index.html')
+  // mainWindow.setAlwaysOnTop(true);
+  const position = mainWindow.getPosition();
+  let left = position[0];
+  let top = position[1];
+
+  const animation = setInterval(() => {
+    if (top <= 50) {
+      clearInterval(animation);
+    }
+    top = top - 10;
+    console.log(position, left, top);
+    mainWindow.setPosition(left, top);
+  }, 100);
+
+
+
+
 });
-
-// function createWindow() {
-//   // Create the browser window.
-//   const mainWindow = new BrowserWindow({
-//     width: 580,
-//     height: 580,
-//     maxHeight: 580,
-//     maxWidth: 580,
-//     webPreferences: {
-//       preload: path.join(__dirname, 'preload.js')
-//     }
-//   })
-
-//   // and load the index.html of the app.
-//   mainWindow.loadFile('index.html')
-// }
-
-
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -39,7 +54,7 @@ app.whenReady().then(() => {
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) CreateWindow('index.html')
+    if (BrowserWindow.getAllWindows().length === 0) loadWindow(mainWindow, 'index.html')
   })
 })
 
@@ -54,29 +69,27 @@ app.on('window-all-closed', function () {
 // code. You can also put them in separate files and require them here.
 
 
-function CreateWindow(htmlFilePath) {
-  // Create the browser window.
-
-  const mainWindow = new BrowserWindow({
-    width: 580,
-    height: 580,
-    maxHeight: 580,
-    maxWidth: 580,
-    transparent: true,
-    frame: false,
-    // frame: false,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
-  })
-
-  // and load the index.html of the app.
-  mainWindow.loadFile(htmlFilePath)
-  mainWindow.setVisibleOnAllWorkspaces(true)
-  mainWindow.show()
-  mainWindow.setPosition(350, 1000);
-  return mainWindow;
+function loadWindow(window, htmlFilePath) {
+  window.loadFile(htmlFilePath)
+  window.setVisibleOnAllWorkspaces(true)
+  window.show()
+  window.setPosition(350, 500);
 }
 
+// function windowAnimation(window) {
+//   const position = window.getPosition();
+//   let x = position[0];
+//   let y = position[1];
+//   console.log(position, x, y);
+//   for (let i = 0; y >= 50; i++) {
+//     y = y - 10;
+//     window.setPosition(x, y);
+//   }
+// }
+
 // need to find a way to use mainWondow to create a timed animation that moves it up
+
+function moveDown() {
+  console.log('clicked')
+}
 
