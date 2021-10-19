@@ -6,34 +6,34 @@
 // process.
 // const CreateWindow = require('./CreateWindow');
 
-const { ipcRenderer } = require("electron/renderer");
+const { ipcRenderer } = require("electron"); // for some reason electron does not recognize require()
 
 
-const minute = 60000;
 
-const TITLE_OPTIONS = [
-    'When was the last time you Commited?',
-    'EDDIE! When have you Commited to me LATELY?',
-    'Saving is NOT enough, you gotta COMMIT!',
-    `It'd be an awful sahme if your computer died right now...`,
-    'BATTERY IS LOW',
-    'מי שלא מקמט מתחרט!',
-    'No Commit - No Coockies',
-    'What am I forgeting?',
-    `You Have To Commit, Child'a!`,
-    'Protect Your Work!',
-    'Commit now to not-kick yourself later!',
-    'it takes 2 seconds and can save a whole days` work',
-    'GO GIT IT!',
-    'git down, git down, and move it all around',
-    'Maybe even a push once in a while?',
-    'if you push it`s like saving REALLY hard',
-    'Always Commit before taking a break',
-    'Commit now to get FREE peace of mind!',
-    'Go on, you know you should',
-    'about to test something and everything still works?',
-    'Are you ready to make this Commit?'
-]
+// const minute = 60000;
+// const TITLE_OPTIONS = [
+//     'When was the last time you Commited?',
+//     'EDDIE! When have you Commited to me LATELY?',
+//     'Saving is NOT enough, you gotta COMMIT!',
+//     `It'd be an awful sahme if your computer died right now...`,
+//     'BATTERY IS LOW',
+//     'מי שלא מקמט מתחרט!',
+//     'No Commit - No Coockies',
+//     'What am I forgeting?',
+//     `You Have To Commit, Child'a!`,
+//     'Protect Your Work!',
+//     'Commit now to not-kick yourself later!',
+//     'it takes 2 seconds and can save a whole days` work',
+//     'GO GIT IT!',
+//     'git down, git down, and move it all around',
+//     'Maybe even a push once in a while?',
+//     'if you push it`s like saving REALLY hard',
+//     'Always Commit before taking a break',
+//     'Commit now to get FREE peace of mind!',
+//     'Go on, you know you should',
+//     'about to test something and everything still works?',
+//     'Are you ready to make this Commit?'
+// ]
 // const BODY_OPTIONS = [
 //     'Commit now to not-kick yourself later!',
 //     'it takes 2 seconds and can save a whole days` work',
@@ -46,7 +46,6 @@ const TITLE_OPTIONS = [
 //     'Go on, you know you should',
 //     'about to test something and everything still works?'
 // ]
-
 // function randomNumber(arr) {
 //     const number = Math.floor(Math.random() * arr.length);
 //     console.log(number)
@@ -58,15 +57,9 @@ const TITLE_OPTIONS = [
 //         .onclick = () => { } // pop the window
 // }
 
-// function timedNotification() {
-//     setInterval(() => {
-//         console.log("timedNotification");
-//         notify();
-//         // CreateWindow('popup.html');
-//     }, .1 * minute)
-// }
 
-// timedNotification();
+
+
 
 
 // add Avi Bitter image to slide up with commit messege, use remove.bg
@@ -87,20 +80,8 @@ button.addEventListener('click', () => {
 })
 
 
-
-                // trying to crete the portmessege connection
-// ipcRenderer.on('port', (event) => {
-//     // When we receive a MessagePort in the main process, it becomes a
-//     // MessagePortMain.
-//     const port = event.ports[0]
-
-//     // MessagePortMain uses the Node.js-style events API, rather than the
-//     // web-style events API. So .on('message', ...) instead of .onmessage = ...
-//     port.on('message', (event) => {
-//         // data is { answer: 42 }
-//         const data = event.data
-//     })
-
-//     // MessagePortMain queues messages until the .start() method has been called.
-//     port.start()
-// })
+console.log(ipcRenderer.sendSync('synchronous-message', 'ping'))
+ipcRenderer.on('asynchronous-reply', (event, arg) => {
+    console.log(arg) // prints "pong"
+})
+ipcRenderer.send('asynchronous-message', 'ping')

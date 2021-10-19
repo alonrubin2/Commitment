@@ -1,14 +1,10 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, webContents } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const electronReload = require('electron-reload')
-var mainWindow = null;
+let mainWindow = null;
 const minute = 60000;
 
-// trying to crete the portmessege connection
-// const channel = new MessageChannel();
-// const port1 = channel.port1;
-// const port2 = channel.port2;
 
 
 
@@ -20,7 +16,7 @@ require('electron-reload')(__dirname, {
 });
 
 app.on('ready', () => {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 580,
     height: 580,
     maxHeight: 580,
@@ -35,14 +31,9 @@ app.on('ready', () => {
   loadWindow(mainWindow, 'index.html')
 
   // animation(mainWindow);
-  // mainWindow.addEventListener('click', () => {
-  //   moveDown()
-  // })
 
 
-  // trying to crete the portmessege connection
-  //   port1.postMessage(mainWindow);
-  // ipcMain.postMessage('port', null, [port2])
+
 });
 
 // This method will be called when Electron has finished
@@ -71,26 +62,23 @@ function loadWindow(window, htmlFilePath) {
   window.loadFile(htmlFilePath)
   window.setVisibleOnAllWorkspaces(true)
   window.show()
-  window.setPosition(350, 350);
+  window.setPosition(350, 150);
 }
 
-
-
-// need to find a way to use mainWondow to create a timed animation that moves it up
-
-function moveDown() {
-  console.log('click')
-}
+// function moveDown() {
+//   console.log('click')
+// }
 
 function animation(window) {
   const position = window.getPosition();
   let left = position[0];
   let top = position[1];
-
-
   const animation = setInterval(() => {
     if (top <= 50) {
       clearInterval(animation);
+      // setTimeout(() => {
+      //   window.setPosition(350, 150);
+      // }, 5000);
     }
     top = top - 10;
     console.log(top, left)
@@ -98,3 +86,14 @@ function animation(window) {
   }, 100);
 
 }
+
+
+ipcMain.on('asynchronous-message', (event, arg) => {
+  console.log(arg) // prints "ping"
+  event.reply('asynchronous-reply', 'pong')
+})
+
+ipcMain.on('synchronous-message', (event, arg) => {
+  console.log(arg) // prints "ping"
+  event.returnValue = 'pong'
+})
