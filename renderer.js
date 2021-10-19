@@ -6,7 +6,27 @@
 // process.
 // const CreateWindow = require('./CreateWindow');
 
-const { ipcRenderer } = require("electron"); // for some reason electron does not recognize require()
+
+
+const { ipcRenderer } = require('electron')
+// console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+
+// ipcRenderer.on('asynchronous-reply', (event, arg) => {
+//     console.log(arg) // prints "pong"
+// })
+// ipcRenderer.send('asynchronous-message', 'ping')
+
+
+function moveDown() {
+    console.log('clicked')
+}
+
+const btn = document.getElementById('close');
+
+btn.addEventListener('click', (e) => {
+    ipcRenderer.send('asynchronous-message', 'ping')
+})
+
 
 
 
@@ -63,25 +83,6 @@ const { ipcRenderer } = require("electron"); // for some reason electron does no
 
 
 // add Avi Bitter image to slide up with commit messege, use remove.bg
-function moveDown() {
-    console.log('clicked')
-}
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     console.log('loaded')
-//     document.querySelector('close').on('click', (e) => {
-//         e.preventDefault();
-//         console.log('elad elad elad')
-//     })
-// });
-const button = document.querySelector('#close');
-button.addEventListener('click', () => {
-    moveDown()
-})
 
 
-console.log(ipcRenderer.sendSync('synchronous-message', 'ping'))
-ipcRenderer.on('asynchronous-reply', (event, arg) => {
-    console.log(arg) // prints "pong"
-})
-ipcRenderer.send('asynchronous-message', 'ping')
+

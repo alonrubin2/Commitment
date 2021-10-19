@@ -25,12 +25,14 @@ app.on('ready', () => {
     frame: false,
     alwaysOnTop: false,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      contextIsolation: false,
     }
   })
   loadWindow(mainWindow, 'index.html')
 
-  // animation(mainWindow);
+  animation(mainWindow);
 
 
 
@@ -62,12 +64,9 @@ function loadWindow(window, htmlFilePath) {
   window.loadFile(htmlFilePath)
   window.setVisibleOnAllWorkspaces(true)
   window.show()
-  window.setPosition(350, 150);
+  window.setPosition(350, 1000);
 }
 
-// function moveDown() {
-//   console.log('click')
-// }
 
 function animation(window) {
   const position = window.getPosition();
@@ -76,9 +75,7 @@ function animation(window) {
   const animation = setInterval(() => {
     if (top <= 50) {
       clearInterval(animation);
-      // setTimeout(() => {
-      //   window.setPosition(350, 150);
-      // }, 5000);
+
     }
     top = top - 10;
     console.log(top, left)
@@ -89,11 +86,8 @@ function animation(window) {
 
 
 ipcMain.on('asynchronous-message', (event, arg) => {
-  console.log(arg) // prints "ping"
-  event.reply('asynchronous-reply', 'pong')
+  if (arg === 'ping') {
+    mainWindow.setPosition(350, 1000)
+  }
 })
 
-ipcMain.on('synchronous-message', (event, arg) => {
-  console.log(arg) // prints "ping"
-  event.returnValue = 'pong'
-})
