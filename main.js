@@ -17,10 +17,10 @@ require('electron-reload')(__dirname, {
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
-    width: 580,
-    height: 580,
-    maxHeight: 580,
-    maxWidth: 580,
+    width: 1000,
+    height: 800,
+    maxHeight: 800,
+    maxWidth: 1000,
     transparent: true,
     frame: false,
     alwaysOnTop: false,
@@ -32,7 +32,10 @@ app.on('ready', () => {
   })
   loadWindow(mainWindow, 'index.html')
 
-  animation(mainWindow);
+  setInterval(() => {
+    animation(mainWindow);
+  }, 90 * minute);
+
 
 
 
@@ -64,7 +67,7 @@ function loadWindow(window, htmlFilePath) {
   window.loadFile(htmlFilePath)
   window.setVisibleOnAllWorkspaces(true)
   window.show()
-  window.setPosition(350, 1000);
+  window.setPosition(150, 1000);
 }
 
 
@@ -73,7 +76,7 @@ function animation(window) {
   let left = position[0];
   let top = position[1];
   const animation = setInterval(() => {
-    if (top <= 50) {
+    if (top <= 20) {
       clearInterval(animation);
 
     }

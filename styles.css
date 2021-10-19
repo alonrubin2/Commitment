@@ -13,19 +13,37 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #78bdd9;
+  background-color: transparent;
   overflow: hidden;
   height: 90%;
 }
 
+img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+button {
+  position: absolute;
+  top: 0;
+  font-size: 25px;
+}
+
 .pink-square {
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#F2AEC7), to(#BF6980));
-  background-image: linear-gradient(to bottom right, #F2AEC7, #BF6980);
   position: absolute;
   border-radius: 8px;
   z-index: -1;
-  -webkit-box-shadow: 6px 6px 12px rgba(54, 91, 115, 0.6);
-          box-shadow: 6px 6px 12px rgba(54, 91, 115, 0.6);
 }
 
 .small {
