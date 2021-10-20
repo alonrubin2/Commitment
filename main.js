@@ -32,11 +32,11 @@ app.on('ready', () => {
   })
   loadWindow(mainWindow, 'index.html')
 
-  // setInterval(() => {
-  //   animation(mainWindow);
-  // }, 90 * minute);
-
+  setInterval(() => {
     animation(mainWindow);
+  }, 90 * minute);
+
+
 
 });
 
