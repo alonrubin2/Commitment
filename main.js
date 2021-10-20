@@ -5,10 +5,6 @@ const electronReload = require('electron-reload')
 let mainWindow = null;
 const minute = 60000;
 
-
-
-
-
 // Enable live reload for Electron too
 require('electron-reload')(__dirname, {
   // Note that the path to electron may vary according to the main file
@@ -23,20 +19,19 @@ app.on('ready', () => {
     maxWidth: 1000,
     transparent: true,
     frame: false,
-    alwaysOnTop: false,
+    alwaysOnTop: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
       contextIsolation: false,
     }
   })
+
   loadWindow(mainWindow, 'index.html')
 
   setInterval(() => {
     animation(mainWindow);
   }, 90 * minute);
-
-
 
 });
 
@@ -58,10 +53,6 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
-
-
 function loadWindow(window, htmlFilePath) {
   window.loadFile(htmlFilePath)
   window.setVisibleOnAllWorkspaces(true)
@@ -69,23 +60,21 @@ function loadWindow(window, htmlFilePath) {
   window.setPosition(150, 1000);
 }
 
-
 function animation(window) {
+
   const position = window.getPosition();
   let left = position[0];
   let top = position[1];
-  const animation = setInterval(() => {
-    if (top <= 20) {
-      clearInterval(animation);
 
+  const animation = setInterval(() => {
+    if (top <= 10) {
+      clearInterval(animation);
     }
     top = top - 10;
-    console.log(top, left)
     window.setPosition(left, top);
   }, 100);
 
 }
-
 
 ipcMain.on('asynchronous-message', (event, arg) => {
   if (arg === 'ping') {
