@@ -2,14 +2,16 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const electronReload = require('electron-reload')
-let mainWindow = null;
+let mainWindow;
 const minute = 60000;
 
-// Enable live reload for Electron too
-require('electron-reload')(__dirname, {
-  // Note that the path to electron may vary according to the main file
-  electron: require(`${__dirname}/node_modules/electron`)
-});
+// // Enable live reload for Electron too
+// require('electron-reload')(__dirname, {
+//   // Note that the path to electron may vary according to the main file
+//   electron: require(`electron`)
+// });
+
+
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
@@ -32,6 +34,8 @@ app.on('ready', () => {
   setInterval(() => {
     animation(mainWindow);
   }, 90 * minute);
+
+  // animation(mainWindow);
 
 });
 

@@ -4,5 +4,3 @@ const btn = document.getElementById('close');
 btn.addEventListener('click', (e) => {
     ipcRenderer.send('asynchronous-message', 'ping')
 })
-
-
