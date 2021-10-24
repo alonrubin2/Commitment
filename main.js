@@ -22,6 +22,7 @@ app.on('ready', () => {
     transparent: true,
     frame: false,
     alwaysOnTop: true,
+    icon: "./assets/avi2.ico",
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
