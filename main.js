@@ -22,6 +22,7 @@ app.on('ready', () => {
     transparent: true,
     frame: false,
     alwaysOnTop: true,
+    enableLargerThanScreen: true,
     icon: "./assets/avi2.ico",
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -49,6 +50,7 @@ app.whenReady().then(() => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) loadWindow(mainWindow, 'index.html')
   })
+
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
