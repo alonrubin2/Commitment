@@ -62,7 +62,7 @@ function loadWindow(window, htmlFilePath) {
   window.loadFile(htmlFilePath)
   window.setVisibleOnAllWorkspaces(true)
   window.show()
-  window.setPosition(150, 1000);
+  window.setPosition(150, 1300);
 }
 
 function animation(window) {
@@ -83,7 +83,9 @@ function animation(window) {
 
 ipcMain.on('asynchronous-message', (event, arg) => {
   if (arg === 'ping') {
-    mainWindow.setPosition(350, 1000)
+    mainWindow.setPosition(150, 1300)
   }
 })
 
+// next step - look at all .git folder on machine and figure out if there was a
+// commit done in the last 90 minutes. if not, pop the app
