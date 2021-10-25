@@ -33,11 +33,11 @@ app.on('ready', () => {
 
   loadWindow(mainWindow, 'index.html')
 
-  setInterval(() => {
-    animation(mainWindow);
-  }, 90 * minute);
+  // setInterval(() => {
+  //   animation(mainWindow);
+  // }, 90 * minute);
 
-  // animation(mainWindow);
+  animation(mainWindow);
 
 });
 
@@ -57,14 +57,13 @@ app.whenReady().then(() => {
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
 })
 
 function loadWindow(window, htmlFilePath) {
   window.loadFile(htmlFilePath)
   window.setVisibleOnAllWorkspaces(true)
   window.show()
-  window.setPosition(150, 1300);
+  window.setPosition(150, 1000);
 }
 
 function animation(window) {
@@ -85,7 +84,7 @@ function animation(window) {
 
 ipcMain.on('asynchronous-message', (event, arg) => {
   if (arg === 'ping') {
-    mainWindow.setPosition(150, 1300)
+    mainWindow.setPosition(150, 1000)
   }
 })
 

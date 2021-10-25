@@ -2,11 +2,19 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 button {
     position: absolute;
     top: 0;
     font-size: 25px;
+}
+
+body {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
